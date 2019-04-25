@@ -1,11 +1,8 @@
-ARG DOCKER_PREFIX=
+FROM ubuntu:latest
+
 ARG TRUST_CERT=
 ARG SQUID_VERSION=4.6
 ARG CONCURRENCY=1
-ARG URL_DOH=https://github.com/wrouesnel/dns-over-https-proxy/releases/download/v0.0.2/dns-over-https-proxy_v0.0.2_linux-amd64.tar.gz
-
-FROM ${DOCKER_PREFIX}ubuntu:latest
-
 RUN if [ ! -z "$TRUST_CERT" ]; then \
         echo "$TRUST_CERT" > /usr/local/share/ca-certificates/build-trust.crt ; \
         update-ca-certificates ; \
