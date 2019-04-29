@@ -21,11 +21,11 @@ RUN if [ ! -z "$TRUST_CERT" ]; then \
     && tar -C squid --strip-components=1 -xvf squid-$SQUID_VERSION.tar.xz && \
     cd /src/squid && \
     ./configure \
-        --prefix=/usr \
-        --datadir=/usr/share/squid4 \
-		--sysconfdir=/etc/squid4 \
-		--localstatedir=/var \
-		--mandir=/usr/share/man \
+        --prefix=/opt \
+        --datadir=/opt/usr/share/squid4 \
+		--sysconfdir=/opt/etc/squid4 \
+		--localstatedir=/opt/var \
+		--mandir=/opt/usr/share/man \
 		--enable-inline \
 		--enable-async-io=8 \
 		--enable-storeio="ufs,aufs,diskd,rock" \
@@ -49,9 +49,9 @@ RUN if [ ! -z "$TRUST_CERT" ]; then \
 		--enable-ssl \
 		--enable-ssl-crtd \ 
 		--disable-translation \
-		--with-swapdir=/var/spool/squid4 \
-		--with-logdir=/var/log/squid4 \
-		--with-pidfile=/var/run/squid4.pid \
+		--with-swapdir=/opt/var/spool/squid4 \
+		--with-logdir=/opt/var/log/squid4 \
+		--with-pidfile=/opt/var/run/squid4.pid \
 		--with-filedescriptors=65536 \
 		--with-large-files \
 		--with-default-user=proxy \
